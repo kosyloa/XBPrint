@@ -53,7 +53,10 @@ class ViewController: UIViewController {
         let enc = CFStringConvertEncodingToNSStringEncoding(CFStringEncoding(cfEnc.rawValue))
         let data = "Swift测试打印 \n".dataUsingEncoding(enc)
         cmmData.appendData(data!)
-        self.peripheral?.writeValue(cmmData, forCharacteristic: self.characteristic!, type: .WithoutResponse)
+        
+        
+        self.peripheral?.setNotifyValue(true, forCharacteristic: self.characteristic!)
+        self.peripheral?.writeValue(cmmData, forCharacteristic: self.characteristic!, type: .WithResponse)
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -83,8 +86,7 @@ extension ViewController: XBBluetoothCenterDelegate {
     func bluetoothCenter(central: CBCentralManager, didDiscoverPeripheral peripheral: CBPeripheral, RSSI: NSNumber) {
         debugPrint(bluetoothManager.peripheralArray.count)
         
-        if peripheral.name!.hasPrefix("D") {
-            self.peripheral = peripheral
+        if peripheral.name!.hasPrefix("G") {
             bluetoothManager.connectPeripheral(peripheral)
             bluetoothManager.stopScan()
         }
@@ -92,13 +94,15 @@ extension ViewController: XBBluetoothCenterDelegate {
     
     func bluetoothCenter(central: CBCentralManager, didConnectPeripheral peripheral: CBPeripheral) {
         debugPrint("连接设备成功")
-        
-        peripheral.delegate = self
+        self.peripheral = peripheral
+        self.peripheral?.delegate = self
         peripheral.discoverServices(nil)
     }
     
     func bluetoothCenter(central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: NSError?) {
         debugPrint("断开外设方法")
+        bluetoothManager.connectPeripheral(self.peripheral!)
+        bluetoothManager.stopScan()
     }
     
     func bluetoothCenter(central: CBCentralManager, didFailToConnectPeripheral peripheral: CBPeripheral, error: NSError?) {
@@ -111,6 +115,7 @@ extension ViewController: XBBluetoothCenterDelegate {
 // MARK: - <#CBPeripheralDelegate#>
 extension ViewController: CBPeripheralDelegate {
     
+    //扫描到Services
     func peripheral(peripheral: CBPeripheral, didDiscoverServices error: NSError?) {
         
         if  let _ = error {
@@ -132,7 +137,6 @@ extension ViewController: CBPeripheralDelegate {
             return
         }
         
-        
         //获取Characteristic的值，读到数据会进入方法：-(void)peripheral:(CBPeripheral *)peripheral didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error
         for characteristic in service.characteristics! {
             peripheral.readValueForCharacteristic(characteristic)
@@ -144,6 +148,7 @@ extension ViewController: CBPeripheralDelegate {
         }
     }
     
+    //获取的charateristic的值
     func peripheral(peripheral: CBPeripheral, didUpdateValueForCharacteristic characteristic: CBCharacteristic, error: NSError?) {
         
         //找到能打印的CBCharacteristic
@@ -152,18 +157,23 @@ extension ViewController: CBPeripheralDelegate {
         }
     }
     
+    //搜索到Characteristic的Descriptors
     func peripheral(peripheral: CBPeripheral, didDiscoverDescriptorsForCharacteristic characteristic: CBCharacteristic, error: NSError?) {
-        if characteristic.properties == .Write {
-            self.characteristic = characteristic
-            print("成功找到可以输出的权限")
-        }
+        debugPrint(characteristic.UUID)
     }
     
+    
+    //获取到Descriptors的值
+    func peripheral(peripheral: CBPeripheral, didUpdateValueForDescriptor descriptor: CBDescriptor, error: NSError?) {
+        //这个descriptor都是对于characteristic的描述，一般都是字符串，所以这里我们转换成字符串去解析
+        debugPrint(descriptor.value)
+    }
+    
+    //写入成功失败的回调
     func peripheral(peripheral: CBPeripheral, didWriteValueForCharacteristic characteristic: CBCharacteristic, error: NSError?) {
-        print(characteristic)
+        print(error)
     }
 }
-
 
 
 extension NSMutableData {
