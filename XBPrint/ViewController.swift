@@ -83,7 +83,7 @@ extension ViewController: XBBluetoothCenterDelegate {
     func bluetoothCenter(central: CBCentralManager, didDiscoverPeripheral peripheral: CBPeripheral, RSSI: NSNumber) {
         debugPrint(bluetoothManager.peripheralArray.count)
         
-        if peripheral.name!.hasPrefix("G") {
+        if peripheral.name!.hasPrefix("D") {
             self.peripheral = peripheral
             bluetoothManager.connectPeripheral(peripheral)
             bluetoothManager.stopScan()
@@ -142,14 +142,13 @@ extension ViewController: CBPeripheralDelegate {
         for characteristic in service.characteristics! {
             peripheral.discoverDescriptorsForCharacteristic(characteristic)
         }
-        
     }
     
     func peripheral(peripheral: CBPeripheral, didUpdateValueForCharacteristic characteristic: CBCharacteristic, error: NSError?) {
-       
-        print(characteristic.properties.rawValue)
-        if characteristic.properties.rawValue == 12 {
-           self.characteristic = characteristic
+        
+        //找到能打印的CBCharacteristic
+        if characteristic.properties.rawValue & CBCharacteristicProperties.Write.rawValue > 0 {
+            self.characteristic = characteristic
         }
     }
     
