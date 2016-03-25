@@ -21,7 +21,7 @@ import CoreBluetooth
     optional func bluetoothCenterOn()
     
     //找到外设方法
-    optional func bluetoothCenter(central: CBCentralManager, didDiscoverPeripheral peripheral: CBPeripheral, RSSI: NSNumber)
+    optional func bluetoothCenter(central: CBCentralManager, didDiscoverPeripheral peripheralArray: [CBPeripheral])
     
     //外设连接失败方法
     optional func bluetoothCenter(central: CBCentralManager, didFailToConnectPeripheral peripheral: CBPeripheral, error: NSError?)
@@ -31,4 +31,11 @@ import CoreBluetooth
     
     //连接外设成功方法
     optional func bluetoothCenter(central: CBCentralManager, didConnectPeripheral peripheral: CBPeripheral)
+    
+    //写入成功方法
+    optional func bluetoothCenter(peripheral: CBPeripheral,didWriteValueForCharacteristic characteristic: CBCharacteristic)
+    
+    //写入失败方法
+    optional func bluetoothCenter(peripheral: CBPeripheral,didWriteValueForCharacteristic characteristic: CBCharacteristic, error: NSError?)
+    
 }

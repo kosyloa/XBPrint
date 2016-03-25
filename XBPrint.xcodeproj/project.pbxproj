@@ -13,6 +13,7 @@
 		334A723A1CA37B18000ECDC1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 334A72381CA37B18000ECDC1 /* LaunchScreen.storyboard */; };
 		334A72451CA37CCB000ECDC1 /* XBBluetoothManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334A72441CA37CCB000ECDC1 /* XBBluetoothManager.swift */; };
 		334A72471CA3AD87000ECDC1 /* XBBluetoohProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334A72461CA3AD87000ECDC1 /* XBBluetoohProtocol.swift */; };
+		334A724D1CA4DBE9000ECDC1 /* XBPrintInstructionsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334A724C1CA4DBE9000ECDC1 /* XBPrintInstructionsProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		334A723B1CA37B18000ECDC1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		334A72441CA37CCB000ECDC1 /* XBBluetoothManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XBBluetoothManager.swift; sourceTree = "<group>"; };
 		334A72461CA3AD87000ECDC1 /* XBBluetoohProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XBBluetoohProtocol.swift; sourceTree = "<group>"; };
+		334A724C1CA4DBE9000ECDC1 /* XBPrintInstructionsProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XBPrintInstructionsProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,7 +72,7 @@
 			isa = PBXGroup;
 			children = (
 				334A72421CA37B8F000ECDC1 /* BluetoothClass */,
-				334A72431CA37B8F000ECDC1 /* PrintClass */,
+				334A724B1CA4DBE9000ECDC1 /* PrintInstruction */,
 			);
 			path = Class;
 			sourceTree = "<group>";
@@ -78,17 +80,18 @@
 		334A72421CA37B8F000ECDC1 /* BluetoothClass */ = {
 			isa = PBXGroup;
 			children = (
-				334A72441CA37CCB000ECDC1 /* XBBluetoothManager.swift */,
 				334A72461CA3AD87000ECDC1 /* XBBluetoohProtocol.swift */,
+				334A72441CA37CCB000ECDC1 /* XBBluetoothManager.swift */,
 			);
 			path = BluetoothClass;
 			sourceTree = "<group>";
 		};
-		334A72431CA37B8F000ECDC1 /* PrintClass */ = {
+		334A724B1CA4DBE9000ECDC1 /* PrintInstruction */ = {
 			isa = PBXGroup;
 			children = (
+				334A724C1CA4DBE9000ECDC1 /* XBPrintInstructionsProtocol.swift */,
 			);
-			path = PrintClass;
+			path = PrintInstruction;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -165,6 +168,7 @@
 				334A72471CA3AD87000ECDC1 /* XBBluetoohProtocol.swift in Sources */,
 				334A72451CA37CCB000ECDC1 /* XBBluetoothManager.swift in Sources */,
 				334A72301CA37B18000ECDC1 /* AppDelegate.swift in Sources */,
+				334A724D1CA4DBE9000ECDC1 /* XBPrintInstructionsProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
