@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		330931271CA4EB37001B52C3 /* XBPrintInstructionProtocol+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 330931261CA4EB37001B52C3 /* XBPrintInstructionProtocol+Extension.swift */; };
 		334A72301CA37B18000ECDC1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334A722F1CA37B18000ECDC1 /* AppDelegate.swift */; };
 		334A72321CA37B18000ECDC1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334A72311CA37B18000ECDC1 /* ViewController.swift */; };
 		334A72371CA37B18000ECDC1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 334A72361CA37B18000ECDC1 /* Assets.xcassets */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		330931261CA4EB37001B52C3 /* XBPrintInstructionProtocol+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "XBPrintInstructionProtocol+Extension.swift"; sourceTree = "<group>"; };
 		334A722C1CA37B18000ECDC1 /* XBPrint.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XBPrint.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		334A722F1CA37B18000ECDC1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		334A72311CA37B18000ECDC1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -90,6 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				334A724C1CA4DBE9000ECDC1 /* XBPrintInstructionsProtocol.swift */,
+				330931261CA4EB37001B52C3 /* XBPrintInstructionProtocol+Extension.swift */,
 			);
 			path = PrintInstruction;
 			sourceTree = "<group>";
@@ -164,6 +167,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				330931271CA4EB37001B52C3 /* XBPrintInstructionProtocol+Extension.swift in Sources */,
 				334A72321CA37B18000ECDC1 /* ViewController.swift in Sources */,
 				334A72471CA3AD87000ECDC1 /* XBBluetoohProtocol.swift in Sources */,
 				334A72451CA37CCB000ECDC1 /* XBBluetoothManager.swift in Sources */,

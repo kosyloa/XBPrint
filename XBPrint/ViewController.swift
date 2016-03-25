@@ -9,7 +9,7 @@
 import UIKit
 import CoreBluetooth
 
-class ViewController: UIViewController {
+class ViewController: UIViewController,XBPrintInstructionProtocol {
 
     var bluetoothManager = XBBluetoothManager()
     
@@ -36,8 +36,7 @@ class ViewController: UIViewController {
     
     func printer() {
         let cmmData = NSMutableData.init()
-        cmmData.appendByte(0x1b)
-        cmmData.appendByte(0x40)
+        cmmData.appendData(printerInitialize)
         cmmData.appendByte(0x1d)
         cmmData.appendByte(0x21)
         cmmData.appendByte(0x01)
@@ -51,9 +50,8 @@ class ViewController: UIViewController {
         
         let cfEnc = CFStringEncodings.GB_18030_2000
         let enc = CFStringConvertEncodingToNSStringEncoding(CFStringEncoding(cfEnc.rawValue))
-        let data = "Swift测试打印 \n".dataUsingEncoding(enc)
+        let data = "Swift测试打印".dataUsingEncoding(enc)
         cmmData.appendData(data!)
-        
         bluetoothManager.writeValue(cmmData)
     }
     
@@ -80,6 +78,7 @@ extension ViewController: XBBluetoothCenterDelegate {
     func bluetoothCenterOn() {
         debugPrint("蓝牙开着")
     }
+    
     
     func bluetoothCenter(central: CBCentralManager, didDiscoverPeripheral peripheralArray: [CBPeripheral]) {
         
@@ -113,13 +112,4 @@ extension ViewController: XBBluetoothCenterDelegate {
     
 }
 
-
-
-
-extension NSMutableData {
-    func appendByte(b: UInt8) {
-        var a = b
-        self.appendBytes(&a, length: 1)
-    }
-}
 
