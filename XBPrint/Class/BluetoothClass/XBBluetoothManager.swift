@@ -207,16 +207,9 @@ extension XBBluetoothManager: CBPeripheralDelegate {
             return
         }
         
-        if let error = error {
-            if delegate.respondsToSelector(#selector(XBBluetoothCenterDelegate.bluetoothCenter(_:didWriteValueForCharacteristic:error:)))
-            {
-                 delegate.bluetoothCenter!(peripheral, didWriteValueForCharacteristic: characteristic, error: error)
-            }
-        } else {
-            if delegate.respondsToSelector(#selector(XBBluetoothCenterDelegate.bluetoothCenter(_:didWriteValueForCharacteristic:)))
-            {
-                delegate.bluetoothCenter!(peripheral, didWriteValueForCharacteristic: characteristic)
-            }
+        if delegate.respondsToSelector(#selector(XBBluetoothCenterDelegate.bluetoothCenter(_:didWriteValueForCharacteristic:error:)))
+        {
+            delegate.bluetoothCenter!(peripheral, didWriteValueForCharacteristic: characteristic, error: error)
         }
     }
 }

@@ -178,6 +178,17 @@ extension ViewController: XBBluetoothCenterDelegate {
         debugPrint("连接设备失败")
     }
     
+    
+    func bluetoothCenter(peripheral: CBPeripheral, didWriteValueForCharacteristic characteristic: CBCharacteristic, error: NSError?) {
+        
+        if let error = error {
+            debugPrint("打印失败\(error)")
+        } else {
+            debugPrint("打印成功")
+        }
+        
+    }
+    
 }
 
 
