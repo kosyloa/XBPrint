@@ -15,11 +15,8 @@ public class XBBluetoothManager: NSObject {
     //委托
     weak var delegate: XBBluetoothCenterDelegate!
     
-    //外设
-    private var peripheral: CBPeripheral?
-    
-    //特征:写入
-    private var characteristic: CBCharacteristic?
+    //外设以及特征
+    private var peripheral = [CBPeripheral:CBCharacteristic?]()
     
     
     //搜索到的外围设备对象集合
@@ -56,9 +53,10 @@ public class XBBluetoothManager: NSObject {
     }
     
     //写入数据
-    public func writeValue(data: NSData) {
-        if let characteristic = characteristic {
-           self.peripheral?.writeValue(data, forCharacteristic: characteristic, type: .WithResponse)
+    public func writeValue(peripheral: CBPeripheral, data: NSData) {
+        if let characteristic = self.peripheral[peripheral] {
+           peripheral.setNotifyValue(true, forCharacteristic: characteristic!)
+           peripheral.writeValue(data, forCharacteristic: characteristic!, type: .WithResponse)
         }
     }
     
@@ -104,6 +102,10 @@ extension XBBluetoothManager: CBCentralManagerDelegate {
             return
         }
         
+        //移除
+        self.peripheral.removeValueForKey(peripheral)
+        
+        
         if delegate.respondsToSelector(#selector(XBBluetoothCenterDelegate.bluetoothCenter(_:didDisconnectPeripheral:error:))) {
             delegate.bluetoothCenter!(central, didDisconnectPeripheral: peripheral, error: error)
         }
@@ -116,11 +118,10 @@ extension XBBluetoothManager: CBCentralManagerDelegate {
         }
         
         //设置外设代理
-        self.peripheral = peripheral
-        self.peripheral?.delegate = self
-        
+        self.peripheral[peripheral] = nil
+        peripheral.delegate = self
         //扫描外设Services，成功后会进入方法：-(void)peripheral:(CBPeripheral *)peripheral didDiscoverServices:(NSError *)error
-        self.peripheral?.discoverServices(nil)
+        peripheral.discoverServices(nil)
         
         if delegate.respondsToSelector(#selector(XBBluetoothCenterDelegate.bluetoothCenter(_:didConnectPeripheral:))) {
             delegate.bluetoothCenter!(central, didConnectPeripheral: peripheral)
@@ -194,7 +195,7 @@ extension XBBluetoothManager: CBPeripheralDelegate {
         
         //找到能打印的CBCharacteristic
         if characteristic.properties.rawValue & CBCharacteristicProperties.Write.rawValue > 0 {
-            self.characteristic = characteristic
+            self.peripheral[peripheral] = characteristic
         }
     }
     
