@@ -39,6 +39,7 @@ public class XBBluetoothManager: NSObject {
     
     //停止扫描
     public func stopScan() {
+        peripheralArray.removeAll()
         centralManager.stopScan()
     }
     
