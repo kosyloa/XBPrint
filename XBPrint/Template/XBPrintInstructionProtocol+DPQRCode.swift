@@ -9,11 +9,16 @@
 import Foundation
 
 
+struct DPQRCode {}
+
+
 // MARK: - 达普打印机的QRCode打印
 extension XBPrintInstructionProtocol {
     
     /*
      ⚠️: 有些厂家的二维码打印不一样呼呼。。。。。。。日了🐶了
+         这里进行扩展是我认为,不太可能有一个app支持N种打印，因为真的很多
+         当然你要支持的话,你可以写一个几个打印机类型的结构体,然后来进行协议扩展指定只能这类打印机用
      */
     
     

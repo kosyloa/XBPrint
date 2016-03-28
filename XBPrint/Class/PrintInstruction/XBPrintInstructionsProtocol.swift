@@ -203,6 +203,17 @@ public protocol XBPrintInstructionProtocol {
     
     
     /**
+     打印二维码(因为有些厂家的打印二维码的打印指令不一样,所以你懂的)
+     
+     - parameter qrcode: 二维码数据
+     
+     - returns: NSData
+     */
+    func printerQRCode(qrcode: String) -> NSData!
+    
+    
+    
+    /**
      查询打印机状态(仅对串口和以太网接口有效)
      
      - returns: NSData
