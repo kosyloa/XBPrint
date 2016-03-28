@@ -28,6 +28,7 @@ class ViewController: UIViewController,XBPrintInstructionProtocol {
     lazy var searchButton: UIButton = {
         let temporaryButton = UIButton(type: .Custom)
         temporaryButton.bounds = CGRectMake(0, 0, 80, 50)
+        temporaryButton.titleEdgeInsets = UIEdgeInsetsMake(0, -20, 0, 0)
         temporaryButton.setTitle("搜索中", forState: .Normal)
         temporaryButton.setTitle("停止搜索", forState: .Selected)
         temporaryButton.setTitleColor(UIColor.redColor(), forState: .Normal)
@@ -39,6 +40,7 @@ class ViewController: UIViewController,XBPrintInstructionProtocol {
     lazy var printButton: UIButton = {
         let temporaryButton = UIButton(type: .Custom)
         temporaryButton.bounds = CGRectMake(0, 0, 80, 50)
+        temporaryButton.titleEdgeInsets = UIEdgeInsetsMake(0, 0, 0, -30)
         temporaryButton.setTitle("打印", forState: .Normal)
         temporaryButton.setTitleColor(UIColor.redColor(), forState: .Normal)
         temporaryButton.setTitleColor(UIColor.redColor(), forState: .Selected)
@@ -142,7 +144,11 @@ class ViewController: UIViewController,XBPrintInstructionProtocol {
                 let cmmQrCodeData = NSMutableData.init()
                 cmmQrCodeData.appendData(printerInitialize)
                 cmmQrCodeData.appendData(printerLeftSpacing(50, nH: 0))
-                cmmQrCodeData.appendData(printerQRCode(printTemplate.qrcode))
+                if peripheral.name!.hasPrefix("D") {
+                    cmmQrCodeData.appendData(printerQRCode(printTemplate.qrcode))
+                } else if peripheral.name!.hasPrefix("G") {
+                  cmmQrCodeData.appendData(printerQRCode(12, ecc: 48, qrcode: printTemplate.qrcode))
+                }
                 cmmQrCodeData.appendData(printerPaperFeed(1))
                 bluetoothManager.writeValue(peripheral, data: cmmQrCodeData)
                 
@@ -178,7 +184,7 @@ class ViewController: UIViewController,XBPrintInstructionProtocol {
                 cmmTechnicalSupportData.appendData(printerLeftSpacing(50, nH: 0))
                 let  technicalSupportData = printTemplate.technicalSupport.dataUsingEncoding(enc)
                 cmmTechnicalSupportData.appendData(technicalSupportData!)
-                cmmTechnicalSupportData.appendData(printerPaperFeed(3))
+                cmmTechnicalSupportData.appendData(printerPaperFeed(5))
                 bluetoothManager.writeValue(peripheral, data: cmmTechnicalSupportData)
             }
         }
@@ -305,7 +311,6 @@ extension ViewController: XBBluetoothCenterDelegate {
         }
         
     }
-    
 }
 
 
