@@ -165,7 +165,7 @@ extension XBBluetoothManager: CBPeripheralDelegate {
     public func peripheral(peripheral: CBPeripheral, didDiscoverServices error: NSError?) {
         
         if  let _ = error {
-            print("出错啦")
+            debugPrint("出错啦")
             return
         }
         

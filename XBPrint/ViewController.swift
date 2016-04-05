@@ -280,7 +280,6 @@ extension ViewController: XBBluetoothCenterDelegate {
         debugPrint("蓝牙开着")
     }
     
-    
     func bluetoothCenter(central: CBCentralManager, didDiscoverPeripheral peripheralArray: [CBPeripheral]) {
         self.printerArrary = peripheralArray
         tableView.reloadData()
@@ -309,7 +308,6 @@ extension ViewController: XBBluetoothCenterDelegate {
         } else {
             debugPrint("打印成功")
         }
-        
     }
 }
 

@@ -9,8 +9,6 @@
 import Foundation
 
 
-struct DPQRCode {}
-
 
 // MARK: - 达普打印机的QRCode打印
 extension XBPrintInstructionProtocol {
