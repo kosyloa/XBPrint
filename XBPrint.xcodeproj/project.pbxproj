@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		330931271CA4EB37001B52C3 /* XBPrintInstructionProtocol+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 330931261CA4EB37001B52C3 /* XBPrintInstructionProtocol+Extension.swift */; };
+		330931271CA4EB37001B52C3 /* PrintInstructionProtocol+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 330931261CA4EB37001B52C3 /* PrintInstructionProtocol+Extension.swift */; };
 		3309312A1CA5477B001B52C3 /* PrinterTypeEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 330931291CA5477B001B52C3 /* PrinterTypeEnum.swift */; };
 		3309312C1CA548B7001B52C3 /* PrintTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3309312B1CA548B7001B52C3 /* PrintTemplate.swift */; };
 		3321AB401CA8CF0A00B7C0FF /* XBPrintInstructionProtocol+DPQRCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3321AB3F1CA8CF0A00B7C0FF /* XBPrintInstructionProtocol+DPQRCode.swift */; };
@@ -15,13 +15,13 @@
 		334A72321CA37B18000ECDC1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334A72311CA37B18000ECDC1 /* ViewController.swift */; };
 		334A72371CA37B18000ECDC1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 334A72361CA37B18000ECDC1 /* Assets.xcassets */; };
 		334A723A1CA37B18000ECDC1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 334A72381CA37B18000ECDC1 /* LaunchScreen.storyboard */; };
-		334A72451CA37CCB000ECDC1 /* XBBluetoothManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334A72441CA37CCB000ECDC1 /* XBBluetoothManager.swift */; };
-		334A72471CA3AD87000ECDC1 /* XBBluetoohProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334A72461CA3AD87000ECDC1 /* XBBluetoohProtocol.swift */; };
-		334A724D1CA4DBE9000ECDC1 /* XBPrintInstructionsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334A724C1CA4DBE9000ECDC1 /* XBPrintInstructionsProtocol.swift */; };
+		334A72451CA37CCB000ECDC1 /* BluetoothManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334A72441CA37CCB000ECDC1 /* BluetoothManager.swift */; };
+		334A72471CA3AD87000ECDC1 /* BluetoohProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334A72461CA3AD87000ECDC1 /* BluetoohProtocol.swift */; };
+		334A724D1CA4DBE9000ECDC1 /* PrintInstructionsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334A724C1CA4DBE9000ECDC1 /* PrintInstructionsProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		330931261CA4EB37001B52C3 /* XBPrintInstructionProtocol+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "XBPrintInstructionProtocol+Extension.swift"; sourceTree = "<group>"; };
+		330931261CA4EB37001B52C3 /* PrintInstructionProtocol+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PrintInstructionProtocol+Extension.swift"; sourceTree = "<group>"; };
 		330931291CA5477B001B52C3 /* PrinterTypeEnum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrinterTypeEnum.swift; sourceTree = "<group>"; };
 		3309312B1CA548B7001B52C3 /* PrintTemplate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrintTemplate.swift; sourceTree = "<group>"; };
 		3321AB3F1CA8CF0A00B7C0FF /* XBPrintInstructionProtocol+DPQRCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "XBPrintInstructionProtocol+DPQRCode.swift"; sourceTree = "<group>"; };
@@ -31,9 +31,9 @@
 		334A72361CA37B18000ECDC1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		334A72391CA37B18000ECDC1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		334A723B1CA37B18000ECDC1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		334A72441CA37CCB000ECDC1 /* XBBluetoothManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XBBluetoothManager.swift; sourceTree = "<group>"; };
-		334A72461CA3AD87000ECDC1 /* XBBluetoohProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XBBluetoohProtocol.swift; sourceTree = "<group>"; };
-		334A724C1CA4DBE9000ECDC1 /* XBPrintInstructionsProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XBPrintInstructionsProtocol.swift; sourceTree = "<group>"; };
+		334A72441CA37CCB000ECDC1 /* BluetoothManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BluetoothManager.swift; sourceTree = "<group>"; };
+		334A72461CA3AD87000ECDC1 /* BluetoohProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BluetoohProtocol.swift; sourceTree = "<group>"; };
+		334A724C1CA4DBE9000ECDC1 /* PrintInstructionsProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrintInstructionsProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,8 +99,8 @@
 		334A72421CA37B8F000ECDC1 /* BluetoothClass */ = {
 			isa = PBXGroup;
 			children = (
-				334A72461CA3AD87000ECDC1 /* XBBluetoohProtocol.swift */,
-				334A72441CA37CCB000ECDC1 /* XBBluetoothManager.swift */,
+				334A72461CA3AD87000ECDC1 /* BluetoohProtocol.swift */,
+				334A72441CA37CCB000ECDC1 /* BluetoothManager.swift */,
 			);
 			path = BluetoothClass;
 			sourceTree = "<group>";
@@ -108,8 +108,8 @@
 		334A724B1CA4DBE9000ECDC1 /* PrintInstruction */ = {
 			isa = PBXGroup;
 			children = (
-				334A724C1CA4DBE9000ECDC1 /* XBPrintInstructionsProtocol.swift */,
-				330931261CA4EB37001B52C3 /* XBPrintInstructionProtocol+Extension.swift */,
+				334A724C1CA4DBE9000ECDC1 /* PrintInstructionsProtocol.swift */,
+				330931261CA4EB37001B52C3 /* PrintInstructionProtocol+Extension.swift */,
 			);
 			path = PrintInstruction;
 			sourceTree = "<group>";
@@ -184,14 +184,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				330931271CA4EB37001B52C3 /* XBPrintInstructionProtocol+Extension.swift in Sources */,
+				330931271CA4EB37001B52C3 /* PrintInstructionProtocol+Extension.swift in Sources */,
 				334A72321CA37B18000ECDC1 /* ViewController.swift in Sources */,
-				334A72471CA3AD87000ECDC1 /* XBBluetoohProtocol.swift in Sources */,
+				334A72471CA3AD87000ECDC1 /* BluetoohProtocol.swift in Sources */,
 				3309312A1CA5477B001B52C3 /* PrinterTypeEnum.swift in Sources */,
-				334A72451CA37CCB000ECDC1 /* XBBluetoothManager.swift in Sources */,
+				334A72451CA37CCB000ECDC1 /* BluetoothManager.swift in Sources */,
 				334A72301CA37B18000ECDC1 /* AppDelegate.swift in Sources */,
 				3321AB401CA8CF0A00B7C0FF /* XBPrintInstructionProtocol+DPQRCode.swift in Sources */,
-				334A724D1CA4DBE9000ECDC1 /* XBPrintInstructionsProtocol.swift in Sources */,
+				334A724D1CA4DBE9000ECDC1 /* PrintInstructionsProtocol.swift in Sources */,
 				3309312C1CA548B7001B52C3 /* PrintTemplate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

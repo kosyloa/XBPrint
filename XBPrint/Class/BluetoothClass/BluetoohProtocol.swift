@@ -12,7 +12,7 @@ import CoreBluetooth
 /**
  *  蓝牙中心协议
  */
-@objc protocol XBBluetoothCenterDelegate: NSObjectProtocol {
+@objc protocol BluetoothCenterDelegate: NSObjectProtocol {
     
     //蓝牙关闭方法
     optional func bluetoothCenterOff()

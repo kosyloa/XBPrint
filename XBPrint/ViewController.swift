@@ -11,7 +11,7 @@ import CoreBluetooth
 
 class ViewController: UIViewController,XBPrintInstructionProtocol {
 
-    var bluetoothManager = XBBluetoothManager()
+    var bluetoothManager = BluetoothManager()
     
     lazy var tableView: UITableView = {
         
@@ -270,7 +270,7 @@ extension ViewController: UITableViewDataSource,UITableViewDelegate {
 
 
 // MARK: - <#XBBluetoothCenterDelegate#>
-extension ViewController: XBBluetoothCenterDelegate {
+extension ViewController: BluetoothCenterDelegate {
     
     func bluetoothCenterOff() {
         debugPrint("蓝牙关闭")

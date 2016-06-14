@@ -10,10 +10,10 @@ import Foundation
 import CoreBluetooth
 
 /// 蓝牙助手类
-public class XBBluetoothManager: NSObject {
+public class BluetoothManager: NSObject {
     
     //委托
-    weak var delegate: XBBluetoothCenterDelegate!
+    weak var delegate: BluetoothCenterDelegate!
     
     //外设以及特征
     private var peripheral = [CBPeripheral:CBCharacteristic?]()
@@ -71,7 +71,7 @@ public class XBBluetoothManager: NSObject {
 
 
 // MARK: - <#CBCentralManagerDelegate#>
-extension XBBluetoothManager: CBCentralManagerDelegate {
+extension BluetoothManager: CBCentralManagerDelegate {
     
     //主设备状态改变的委托
     public func centralManagerDidUpdateState(central: CBCentralManager) {
@@ -85,10 +85,10 @@ extension XBBluetoothManager: CBCentralManagerDelegate {
         case .Resetting : debugPrint("重置")
         case .Unsupported : debugPrint("不支持的")
         case .Unauthorized : debugPrint("未经授权")
-        case .PoweredOff : if delegate.respondsToSelector(#selector(XBBluetoothCenterDelegate.bluetoothCenterOff)) {
+        case .PoweredOff : if delegate.respondsToSelector(#selector(BluetoothCenterDelegate.bluetoothCenterOff)) {
             delegate.bluetoothCenterOff!()
             }
-        case .PoweredOn : if delegate.respondsToSelector(#selector(XBBluetoothCenterDelegate.bluetoothCenterOn)) {
+        case .PoweredOn : if delegate.respondsToSelector(#selector(BluetoothCenterDelegate.bluetoothCenterOn)) {
                delegate.bluetoothCenterOn!()
             }
             centralManager.scanForPeripheralsWithServices(nil, options: nil)
@@ -107,7 +107,7 @@ extension XBBluetoothManager: CBCentralManagerDelegate {
         self.peripheral.removeValueForKey(peripheral)
         
         
-        if delegate.respondsToSelector(#selector(XBBluetoothCenterDelegate.bluetoothCenter(_:didDisconnectPeripheral:error:))) {
+        if delegate.respondsToSelector(#selector(BluetoothCenterDelegate.bluetoothCenter(_:didDisconnectPeripheral:error:))) {
             delegate.bluetoothCenter!(central, didDisconnectPeripheral: peripheral, error: error)
         }
     }
@@ -124,7 +124,7 @@ extension XBBluetoothManager: CBCentralManagerDelegate {
         //扫描外设Services，成功后会进入方法：-(void)peripheral:(CBPeripheral *)peripheral didDiscoverServices:(NSError *)error
         peripheral.discoverServices(nil)
         
-        if delegate.respondsToSelector(#selector(XBBluetoothCenterDelegate.bluetoothCenter(_:didConnectPeripheral:))) {
+        if delegate.respondsToSelector(#selector(BluetoothCenterDelegate.bluetoothCenter(_:didConnectPeripheral:))) {
             delegate.bluetoothCenter!(central, didConnectPeripheral: peripheral)
         }
     }
@@ -136,7 +136,7 @@ extension XBBluetoothManager: CBCentralManagerDelegate {
             return
         }
         
-        if delegate.respondsToSelector(#selector(XBBluetoothCenterDelegate.bluetoothCenter(_:didFailToConnectPeripheral:error:))) {
+        if delegate.respondsToSelector(#selector(BluetoothCenterDelegate.bluetoothCenter(_:didFailToConnectPeripheral:error:))) {
             delegate.bluetoothCenter!(central, didFailToConnectPeripheral: peripheral, error: error)
         }
     }
@@ -151,7 +151,7 @@ extension XBBluetoothManager: CBCentralManagerDelegate {
             return
         }
         
-        if  delegate.respondsToSelector(#selector(XBBluetoothCenterDelegate.bluetoothCenter(_:didConnectPeripheral:))) {
+        if  delegate.respondsToSelector(#selector(BluetoothCenterDelegate.bluetoothCenter(_:didConnectPeripheral:))) {
             delegate.bluetoothCenter!(central, didDiscoverPeripheral: peripheralArray)
         }
     }
@@ -159,7 +159,7 @@ extension XBBluetoothManager: CBCentralManagerDelegate {
 
 
 // MARK: - <#CBPeripheralDelegate#>
-extension XBBluetoothManager: CBPeripheralDelegate {
+extension BluetoothManager: CBPeripheralDelegate {
     
     //扫描到Services
     public func peripheral(peripheral: CBPeripheral, didDiscoverServices error: NSError?) {
@@ -208,7 +208,7 @@ extension XBBluetoothManager: CBPeripheralDelegate {
             return
         }
         
-        if delegate.respondsToSelector(#selector(XBBluetoothCenterDelegate.bluetoothCenter(_:didWriteValueForCharacteristic:error:)))
+        if delegate.respondsToSelector(#selector(BluetoothCenterDelegate.bluetoothCenter(_:didWriteValueForCharacteristic:error:)))
         {
             delegate.bluetoothCenter!(peripheral, didWriteValueForCharacteristic: characteristic, error: error)
         }
