@@ -9,7 +9,7 @@
   },
   "source": {
     "git": "https://github.com/LiuSky/XBPrint",
-    "tag": "1.1.0"
+    "tag": "1.0"
   },
   "platforms": {
     "ios": "8.0"
