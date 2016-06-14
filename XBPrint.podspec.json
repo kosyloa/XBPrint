@@ -14,6 +14,6 @@
   "platforms": {
     "ios": "8.0"
   },
-  "source_files": "XBPrint/Class/*.{h,m}",
+  "source_files": "XBPrint/BluetoothPrint/*.{h,m}",
   "requires_arc": true
 }
