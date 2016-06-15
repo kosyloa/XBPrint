@@ -7,6 +7,6 @@ Pod::Spec.new do |s|
   s.authors      = { 'tangjr' => '327847390@qq.com'}
   s.platform     = :ios, "8.0"
   s.source       = { :git => "https://github.com/LiuSky/XBPrint.git", :tag => s.version }
-  s.source_files = 'XBPrint', 'XBPrint/BluetoothPrint/**/*.{h,m}'
+  s.source_files = 'XBPrint/BluetoothPrint', 'XBPrint/BluetoothPrint/**/*.{h,m}'
   s.requires_arc = true
 end
