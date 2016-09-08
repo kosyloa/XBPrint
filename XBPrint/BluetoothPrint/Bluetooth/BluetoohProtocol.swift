@@ -15,24 +15,24 @@ import CoreBluetooth
 @objc protocol BluetoothCenterDelegate: NSObjectProtocol {
     
     //蓝牙关闭方法
-    optional func bluetoothCenterOff()
+    @objc optional func bluetoothCenterOff()
     
     //蓝牙开启方法
-    optional func bluetoothCenterOn()
+    @objc optional func bluetoothCenterOn()
     
     //找到外设方法
-    optional func bluetoothCenter(central: CBCentralManager, didDiscoverPeripheral peripheralArray: [CBPeripheral])
+    @objc optional func bluetoothCenter(_ central: CBCentralManager, didDiscoverPeripheral peripheralArray: [CBPeripheral])
     
     //外设连接失败方法
-    optional func bluetoothCenter(central: CBCentralManager, didFailToConnectPeripheral peripheral: CBPeripheral, error: NSError?)
+    @objc optional func bluetoothCenter(_ central: CBCentralManager, didFailToConnectPeripheral peripheral: CBPeripheral, error: NSError?)
     
     //断开外设方法
-    optional func bluetoothCenter(central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: NSError?)
+    @objc optional func bluetoothCenter(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: NSError?)
     
     //连接外设成功方法
-    optional func bluetoothCenter(central: CBCentralManager, didConnectPeripheral peripheral: CBPeripheral)
+    @objc optional func bluetoothCenter(_ central: CBCentralManager, didConnectPeripheral peripheral: CBPeripheral)
     
     //写入成功/失败方法
-    optional func bluetoothCenter(peripheral: CBPeripheral,didWriteValueForCharacteristic characteristic: CBCharacteristic, error: NSError?)
+    @objc optional func bluetoothCenter(_ peripheral: CBPeripheral,didWriteValueForCharacteristic characteristic: CBCharacteristic, error: NSError?)
     
 }

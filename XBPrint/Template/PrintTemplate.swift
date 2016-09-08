@@ -59,13 +59,13 @@ public enum TableType: Int {
     
     var tableName: String {
         switch self {
-        case tableForTwo:
+        case .tableForTwo:
             return "2人桌"
-        case tableForFour:
+        case .tableForFour:
             return "4人桌"
-        case tableForSix:
+        case .tableForSix:
             return "6人桌"
-        case tableForEight:
+        case .tableForEight:
             return "8人桌"
         }
     }

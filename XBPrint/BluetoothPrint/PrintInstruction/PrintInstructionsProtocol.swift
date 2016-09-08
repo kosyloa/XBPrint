@@ -21,19 +21,19 @@ public protocol XBPrintInstructionProtocol {
     /**
      初始化打印机
      */
-    var printerInitialize: NSData! { get }
+    var printerInitialize: Data { get }
     
     
     /**
      水平定位
      */
-    var printerHorizontalPositioning: NSData! { get }
+    var printerHorizontalPositioning: Data { get }
     
     
     /**
      打印并换行
      */
-    var println: NSData! { get }
+    var println: Data { get }
     
 
     /**
@@ -44,7 +44,7 @@ public protocol XBPrintInstructionProtocol {
      
      - returns:  NSData
      */
-    func printerLeftSpacing(nL: UInt8, nH: UInt8) -> NSData!
+    func printerLeftSpacing(_ nL: UInt8, nH: UInt8) -> Data
     
     
     /**
@@ -54,7 +54,7 @@ public protocol XBPrintInstructionProtocol {
      
      - returns:  NSData
      */
-    func printerRightSpacing(n: UInt8) -> NSData!
+    func printerRightSpacing(_ n: UInt8) -> Data
     
     
 
@@ -65,7 +65,7 @@ public protocol XBPrintInstructionProtocol {
      
      - returns:  NSData
      */
-    func printerModel(n: UInt8) -> NSData!
+    func printer(model: UInt8) -> Data
     
     
     /**
@@ -75,7 +75,7 @@ public protocol XBPrintInstructionProtocol {
      
      - returns:  NSData
      */
-    func printerCharacterSize(n: UInt8) -> NSData!
+    func printer(characterSize: UInt8) -> Data
     
     
 
@@ -87,8 +87,8 @@ public protocol XBPrintInstructionProtocol {
      
      - returns:  NSData
      */
-    func printerAbsolutePosition(nL: UInt8, nH: UInt8) -> NSData!
-    
+    func printerAbsolutePosition(_ nL: UInt8, nH: UInt8) -> Data
+
     
     /**
      选择/取消用户自定义字符
@@ -97,8 +97,8 @@ public protocol XBPrintInstructionProtocol {
      
      - returns:  NSData
      */
-    func printerCustomCharacter(isCustomCharacter: Bool) -> NSData!
-    
+    func printer(customCharacter: Bool) -> Data
+
     
     /**
      选择/取消下划线模式
@@ -107,16 +107,16 @@ public protocol XBPrintInstructionProtocol {
      
      - returns: NSData
      */
-    func printerUnderlineMode(n: UInt8) -> NSData!
-    
+    func printer(underlineMode: UInt8) -> Data
+
     
     /**
      设置默认行间距
      
      - returns: NSData
      */
-    func printerDefaultLineSpacing() -> NSData!
-    
+    func printerDefaultLineSpacing() -> Data
+
     
     /**
      设置行间距
@@ -125,8 +125,8 @@ public protocol XBPrintInstructionProtocol {
      
      - returns:  NSData
      */
-    func printerSetTheLineSpacing(n: UInt8) -> NSData!
-    
+    func printer(lineSpacing: UInt8) -> Data
+
     
     /**
      选择/取消加粗模式
@@ -135,8 +135,8 @@ public protocol XBPrintInstructionProtocol {
      
      - returns:  NSData
      */
-    func printerBoldPatterns(isBoldPatterns: Bool) -> NSData!
-    
+    func printer(boldPatterns: Bool) -> Data
+
     
 
     /**
@@ -146,8 +146,8 @@ public protocol XBPrintInstructionProtocol {
      
      - returns:  NSData
      */
-    func printerDoublePrintMode(isDoublePrintMode: Bool) -> NSData!
-    
+    func printer(doublePrintMode: Bool) -> Data
+
     
     /**
      选择字体
@@ -156,8 +156,8 @@ public protocol XBPrintInstructionProtocol {
      
      - returns:  NSData
      */
-    func printerFont(n: UInt8) -> NSData!
-    
+    func printer(font: UInt8) -> Data
+
     
     /**
      选择国际字符集
@@ -166,8 +166,8 @@ public protocol XBPrintInstructionProtocol {
      
      - returns:  NSData
      */
-    func printerCharacter(n: UInt8) -> NSData!
-    
+    func printer(character: UInt8) -> Data
+
     
     /**
      选择对齐方式
@@ -176,8 +176,8 @@ public protocol XBPrintInstructionProtocol {
      
      - returns:  NSData
      */
-    func printerAlignment(n: UInt8) -> NSData!
-    
+    func printer(alignment: UInt8) -> Data
+
     
     /**
      打印并向前走纸 n 行
@@ -186,8 +186,8 @@ public protocol XBPrintInstructionProtocol {
      
      - returns:  NSData
      */
-    func printerPaperFeed(n: UInt8) -> NSData!
-    
+    func printer(paperFeed: UInt8) -> Data
+
     
     
     /**
@@ -199,8 +199,8 @@ public protocol XBPrintInstructionProtocol {
      
      - returns:  NSData
      */
-    func printerQRCode(size: UInt8!, ecc: UInt8, qrcode: String) -> NSData!
-    
+    func printerQRCode(_ size: UInt8, ecc: UInt8, qrcode: String) -> Data
+
     
     /**
      打印二维码(因为有些厂家的打印二维码的打印指令不一样,所以你懂的)
@@ -209,14 +209,14 @@ public protocol XBPrintInstructionProtocol {
      
      - returns: NSData
      */
-    func printerQRCode(qrcode: String) -> NSData!
+    func printer(qrcode: String) -> Data
     
-    
+
     
     /**
      查询打印机状态(仅对串口和以太网接口有效)
      
      - returns: NSData
      */
-    func printerState() -> NSData!
+    func printerState() -> Data
 }

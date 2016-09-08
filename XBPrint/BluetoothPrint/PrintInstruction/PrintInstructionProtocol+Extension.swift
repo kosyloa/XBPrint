@@ -28,9 +28,9 @@ extension XBPrintInstructionProtocol {
      • NV位图数据不擦除。
      • 用户NV存储器数据不擦除。
      */
-    var printerInitialize: NSData! {
+    var printerInitialize: Data {
         get {
-            let cmmData = NSMutableData.init()
+            var cmmData = Data()
             cmmData.appendByte(27)
             cmmData.appendByte(64)
             return cmmData
@@ -56,9 +56,9 @@ extension XBPrintInstructionProtocol {
      标准模式下,打印机打印当前行内容并将打印位置置于下一行的起始位置。
      页模式下,打印机进行换行并将打印位置置于下一行的起始位置。
      */
-    var printerHorizontalPositioning: NSData! {
+    var printerHorizontalPositioning: Data {
         get {
-            let cmmData = NSMutableData.init()
+            var cmmData = Data()
             cmmData.appendByte(9)
             return cmmData
         }
@@ -74,11 +74,11 @@ extension XBPrintInstructionProtocol {
      [描述]: 将打印缓冲区中的数据打印出来,并且按照当前行间距,把打印纸向前推进一行
      [注释]: 该命令把打印位置设置为行的开始位置
      */
-    var println: NSData! {
+    var println: Data {
         get {
-            let cmmData = NSMutableData.init()
+            var cmmData = Data()
             cmmData.appendByte(10)
-            return cmmData
+            return cmmData 
         }
     }
     
@@ -104,13 +104,13 @@ extension XBPrintInstructionProtocol {
               左边距。
      [默认值] nL = 0, nH = 0
      */
-    func printerLeftSpacing(nL: UInt8, nH: UInt8) -> NSData!{
-        let cmmData = NSMutableData.init()
+    func printerLeftSpacing(_ nL: UInt8, nH: UInt8) -> Data {
+        var cmmData = Data()
         cmmData.appendByte(29)
         cmmData.appendByte(76)
         cmmData.appendByte(nL)
         cmmData.appendByte(nH)
-        return cmmData
+        return cmmData 
     }
     
     
@@ -138,12 +138,12 @@ extension XBPrintInstructionProtocol {
      [默认值]: n = 0
      - returns: NSData!
      */
-    func printerRightSpacing(n: UInt8) -> NSData! {
-        let cmmData = NSMutableData.init()
+    func printerRightSpacing(_ n: UInt8) -> Data {
+        var cmmData = Data()
         cmmData.appendByte(27)
         cmmData.appendByte(32)
         cmmData.appendByte(n)
-        return cmmData
+        return cmmData 
     }
     
     
@@ -178,15 +178,15 @@ extension XBPrintInstructionProtocol {
      • 粗体模式对英数字符和汉字都有效。除粗体模式外的所有打印模式仅对英数字符有效。
      [默认值] n = 0
      */
-    func printerModel(n: UInt8) -> NSData! {
+     func printer(model: UInt8) -> Data {
         
-        let cmmData = NSMutableData.init()
+        var cmmData = Data()
         cmmData.appendByte(27)
         cmmData.appendByte(33)
-        cmmData.appendByte(n)
-        return cmmData
+        cmmData.appendByte(model)
+        return cmmData 
+        
     }
-    
     
     
     /**
@@ -220,12 +220,13 @@ extension XBPrintInstructionProtocol {
      • 同一行字符的放大倍数不同时,所有的字符以底线对齐。
      • ESC ! 命令也可以选择或者取消字符倍宽和倍高,最后接收的命令有效
      [默认值]  n = 0
-     */
-    func printerCharacterSize(n: UInt8) -> NSData! {
-        let cmmData = NSMutableData.init()
+    */
+    func printer(characterSize: UInt8) -> Data {
+        
+        var cmmData = Data()
         cmmData.appendByte(29)
         cmmData.appendByte(33)
-        cmmData.appendByte(n)
+        cmmData.appendByte(characterSize)
         return cmmData
     }
     
@@ -246,13 +247,13 @@ extension XBPrintInstructionProtocol {
      1、当打印起始位置由ESC T设置为打印区域的左上角或右下角时,使用横向移动单位;
      2、当打印起始位置由ESC T设置为打印区域的左下角或右上角时,使用纵向移动单位;
      */
-    func printerAbsolutePosition(nL: UInt8, nH: UInt8) -> NSData! {
-        let cmmData = NSMutableData.init()
+    func printerAbsolutePosition(_ nL: UInt8, nH: UInt8) -> Data {
+        var cmmData = Data()
         cmmData.appendByte(27)
         cmmData.appendByte(36)
         cmmData.appendByte(nL)
         cmmData.appendByte(nH)
-        return cmmData
+        return cmmData 
     }
     
     
@@ -270,19 +271,18 @@ extension XBPrintInstructionProtocol {
      • n 只有最低位有效。
      [默认值]: n = 0
      */
-    func printerCustomCharacter(isCustomCharacter: Bool) -> NSData! {
-       
-        let cmmData = NSMutableData.init()
+    func printer(customCharacter: Bool) -> Data {
+        
+        var cmmData = Data()
         cmmData.appendByte(27)
         cmmData.appendByte(37)
-        if isCustomCharacter {
+        if customCharacter {
             cmmData.appendByte(1)
         } else {
-           cmmData.appendByte(0)
+            cmmData.appendByte(0)
         }
         return cmmData
     }
-    
     
     
     /**
@@ -303,12 +303,12 @@ extension XBPrintInstructionProtocol {
      • 该命令不影响汉字字符的设定。
      [默认值]: n = 0
      */
-    func printerUnderlineMode(n: UInt8) -> NSData! {
-        let cmmData = NSMutableData.init()
+    func printer(underlineMode: UInt8) -> Data {
+        var cmmData = Data()
         cmmData.appendByte(27)
         cmmData.appendByte(45)
-        cmmData.appendByte(n)
-        return cmmData
+        cmmData.appendByte(underlineMode)
+        return cmmData 
     }
     
     
@@ -321,11 +321,11 @@ extension XBPrintInstructionProtocol {
      [描述]: 选择约 3.75mm 行间距。
      [注释]: • 行间距在标准模式和页模式下是独立的。
      */
-    func printerDefaultLineSpacing() -> NSData! {
-        let cmmData = NSMutableData.init()
+    func printerDefaultLineSpacing() -> Data {
+        var cmmData = Data()
         cmmData.appendByte(27)
         cmmData.appendByte(50)
-        return cmmData
+        return cmmData 
     }
     
     
@@ -347,12 +347,12 @@ extension XBPrintInstructionProtocol {
      • 最大走纸距离是956 mm,如果超出这个距离,取最大距离。
      [默认值]: 默认值行高约为3.75mm。
      */
-    func printerSetTheLineSpacing(n: UInt8) -> NSData! {
-        let cmmData = NSMutableData.init()
+    func printer(lineSpacing: UInt8) -> Data {
+        var cmmData = Data()
         cmmData.appendByte(27)
         cmmData.appendByte(51)
-        cmmData.appendByte(n)
-        return cmmData
+        cmmData.appendByte(lineSpacing)
+        return cmmData 
     }
     
     
@@ -370,17 +370,17 @@ extension XBPrintInstructionProtocol {
      • ESC ! 同样可以选择/取消加粗模式,最后接收的命令有效。
      [默认值]: n = 0
      */
-    func printerBoldPatterns(isBoldPatterns: Bool) -> NSData! {
+    func printer(boldPatterns: Bool) -> Data {
         
-        let cmmData = NSMutableData.init()
+        var cmmData = Data()
         cmmData.appendByte(27)
         cmmData.appendByte(69)
-        if isBoldPatterns {
+        if boldPatterns {
             cmmData.appendByte(1)
         } else {
             cmmData.appendByte(0)
         }
-        return cmmData
+        return cmmData 
     }
    
     
@@ -398,16 +398,16 @@ extension XBPrintInstructionProtocol {
      • 该命令与加粗打印效果相同。
      [默认值]: n = 0
      */
-    func printerDoublePrintMode(isDoublePrintMode: Bool) -> NSData! {
-        let cmmData = NSMutableData.init()
+    func printer(doublePrintMode: Bool) -> Data {
+        var cmmData = Data()
         cmmData.appendByte(27)
         cmmData.appendByte(71)
-        if isDoublePrintMode {
+        if doublePrintMode {
             cmmData.appendByte(1)
         } else {
             cmmData.appendByte(0)
         }
-        return cmmData
+        return cmmData 
     }
     
     
@@ -421,12 +421,12 @@ extension XBPrintInstructionProtocol {
      [描述]: 0,48  选择标准ASCII码字体 (12 × 24)
      1,49  选择压缩ASCII码字体 (9 × 17)
      */
-    func printerFont(n: UInt8) -> NSData! {
-        let cmmData = NSMutableData.init()
+    func printer(font: UInt8) -> Data {
+        var cmmData = Data()
         cmmData.appendByte(27)
         cmmData.appendByte(77)
-        cmmData.appendByte(n)
-        return cmmData
+        cmmData.appendByte(font)
+        return cmmData 
     }
     
     
@@ -455,12 +455,12 @@ extension XBPrintInstructionProtocol {
      14 斯洛维尼亚/克罗帝亚
      15 中国
      */
-    func printerCharacter(n: UInt8) -> NSData! {
-        let cmmData = NSMutableData.init()
+     func printer(character: UInt8) -> Data {
+        var cmmData = Data()
         cmmData.appendByte(27)
         cmmData.appendByte(82)
-        cmmData.appendByte(n)
-        return cmmData
+        cmmData.appendByte(character)
+        return cmmData 
     }
     
     
@@ -482,12 +482,12 @@ extension XBPrintInstructionProtocol {
      • 该命令根据HT, ESC $ 或 ESC \命令来调整空白区域。
      [默认值]: n = 0
      */
-    func printerAlignment(n: UInt8) -> NSData! {
-        let cmmData = NSMutableData.init()
+    func printer(alignment: UInt8) -> Data {
+        var cmmData = Data()
         cmmData.appendByte(27)
         cmmData.appendByte(97)
-        cmmData.appendByte(n)
-        return cmmData
+        cmmData.appendByte(alignment)
+        return cmmData 
     }
     
     
@@ -503,12 +503,12 @@ extension XBPrintInstructionProtocol {
      • 该命令不影响由ESC 2 或 ESC 3设置的行间距。
      • 最大走纸距离为1016 mm,当所设的值大于1016 mm时,取最大值。
      */
-    func printerPaperFeed(n: UInt8) -> NSData! {
-        let cmmData = NSMutableData.init()
+    func printer(paperFeed: UInt8) -> Data {
+        var cmmData = Data()
         cmmData.appendByte(27)
         cmmData.appendByte(100)
-        cmmData.appendByte(n)
-        return cmmData
+        cmmData.appendByte(paperFeed)
+        return cmmData 
     }
     
     
@@ -524,9 +524,9 @@ extension XBPrintInstructionProtocol {
      [注释]: • 执行esc @或打印机掉电后,恢复默认值
      • 模块的宽度=模块的高度,因为QRCode是正方形的
      */
-    func printerQRCodeSize(n: UInt8) -> NSData! {
+    func printerQRCodeSize(_ n: UInt8) -> Data! {
         
-        let cmmData = NSMutableData.init()
+        var cmmData = Data()
         cmmData.appendByte(29)
         cmmData.appendByte(40)
         cmmData.appendByte(107)
@@ -535,7 +535,7 @@ extension XBPrintInstructionProtocol {
         cmmData.appendByte(49)
         cmmData.appendByte(67)
         cmmData.appendByte(n)
-        return cmmData
+        return cmmData 
     }
     
     
@@ -554,8 +554,8 @@ extension XBPrintInstructionProtocol {
      51     选择纠错等级H   30
      [注释]:  • 执行esc @或打印机掉电后,恢复默认值
      */
-    func  printerQRCodeECC(n: UInt8) -> NSData! {
-        let cmmData = NSMutableData.init()
+    func  printerQRCodeECC(_ n: UInt8) -> Data! {
+        var cmmData = Data()
         cmmData.appendByte(29)
         cmmData.appendByte(40)
         cmmData.appendByte(107)
@@ -564,7 +564,7 @@ extension XBPrintInstructionProtocol {
         cmmData.appendByte(49)
         cmmData.appendByte(69)
         cmmData.appendByte(n)
-        return cmmData
+        return cmmData 
     }
     
     
@@ -578,10 +578,10 @@ extension XBPrintInstructionProtocol {
      [注释]   • 将QRCode的数据存储到打印机中
      • 执行esc @或打印机掉电后,恢复默认值
      */
-    func printerStoringData(qrcode: String) -> NSData! {
+    func printerStoringData(_ qrcode: String) -> Data! {
         
         let  nLength = qrcode.characters.count + 3
-        let cmmData = NSMutableData.init()
+        var cmmData = Data()
         cmmData.appendByte(29)
         cmmData.appendByte(40)
         cmmData.appendByte(107)
@@ -590,9 +590,9 @@ extension XBPrintInstructionProtocol {
         cmmData.appendByte(49)
         cmmData.appendByte(80)
         cmmData.appendByte(48)
-        let printData = qrcode.dataUsingEncoding(NSUTF8StringEncoding)
-        cmmData.appendData(printData!)
-        return cmmData
+        let printData = qrcode.data(using: String.Encoding.utf8)
+        cmmData.append(printData!)
+        return cmmData 
     }
     
     
@@ -604,9 +604,9 @@ extension XBPrintInstructionProtocol {
      [范围]: (pL+pH×256)=3 (pL=3,pH=0)  cn=49 fn=81 m=48
      [描述]: 打印QRCode条码,在发送此命令之前,需通过(K< Function 180)命令将QRCode数 据存储在打印机中。
      */
-    func printerQRCodeStorageData() -> NSData! {
+    func printerQRCodeStorageData() -> Data! {
         
-        let cmmData = NSMutableData.init()
+        var cmmData = Data()
         cmmData.appendByte(29)
         cmmData.appendByte(40)
         cmmData.appendByte(107)
@@ -615,21 +615,21 @@ extension XBPrintInstructionProtocol {
         cmmData.appendByte(49)
         cmmData.appendByte(81)
         cmmData.appendByte(48)
-        return cmmData
+        return cmmData 
     }
     
     
     /**
      打印二维码
      */
-    func printerQRCode(size: UInt8!, ecc: UInt8, qrcode: String) -> NSData! {
+    func printerQRCode(_ size: UInt8, ecc: UInt8, qrcode: String) -> Data {
         
-        let cmmData = NSMutableData.init()
-        cmmData.appendData(printerQRCodeSize(size))
-        cmmData.appendData(printerQRCodeECC(ecc))
-        cmmData.appendData(printerStoringData(qrcode))
-        cmmData.appendData(printerQRCodeStorageData())
-        return cmmData
+        var cmmData = Data()
+        cmmData.append(printerQRCodeSize(size))
+        cmmData.append(printerQRCodeECC(ecc))
+        cmmData.append(printerStoringData(qrcode))
+        cmmData.append(printerQRCodeStorageData())
+        return cmmData 
     }
     
     
@@ -644,19 +644,19 @@ extension XBPrintInstructionProtocol {
      当n=0时,打印机有纸;
      当n=4时,打印机缺纸。
      */
-    func printerState() -> NSData! {
-        let cmmData = NSMutableData.init()
+    func printerState() -> Data {
+        var cmmData = Data()
         cmmData.appendByte(27)
         cmmData.appendByte(118)
-        return cmmData
+        return cmmData 
     }
 }
 
 
-// MARK: - 扩展NSMutableData
-extension NSMutableData {
-    func appendByte(b: UInt8) {
+// MARK: - 扩展Data
+extension Data {
+    mutating func appendByte(_ b: UInt8) {
         var a = b
-        self.appendBytes(&a, length: 1)
+        self.append(&a, count: 1)
     }
 }

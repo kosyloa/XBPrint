@@ -25,12 +25,10 @@ extension XBPrintInstructionProtocol {
      - parameter qrcode:   二维码数据
      - returns:            Data
      */
-    func printerQRCode(qrcode: String) -> NSData! {
-    
-        
+    func printer(qrcode: String) -> Data {
         let  nLength = qrcode.characters.count + 0
         
-        let cmmData = NSMutableData.init()
+        var cmmData = Data()
         cmmData.appendByte(29)
         cmmData.appendByte(119)
         cmmData.appendByte(11)//二维码大小设置
@@ -41,8 +39,8 @@ extension XBPrintInstructionProtocol {
         cmmData.appendByte(0)
         cmmData.appendByte(1)
         cmmData.appendByte(UInt8(nLength))//二维码大小
-        let printData = qrcode.dataUsingEncoding(NSUTF8StringEncoding)
-        cmmData.appendData(printData!)
+        let printData = qrcode.data(using: String.Encoding.utf8)
+        cmmData.append(printData!)
         return cmmData
     }
 }

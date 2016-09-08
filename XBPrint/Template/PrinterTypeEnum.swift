@@ -16,6 +16,6 @@ import Foundation
  */
 enum PrinterType: Int {
     
-    case DAPPER //达普打印机(型号: DP-HT201)
-    case GPRINTER //佳博打印机(型号: GP-58MBIII)
+    case dapper //达普打印机(型号: DP-HT201)
+    case gprinter //佳博打印机(型号: GP-58MBIII)
 }
